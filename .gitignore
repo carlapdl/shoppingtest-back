@@ -3,3 +3,4 @@
 /src/vendor/
 /src/composer.json
 /src/composer.lock
+/src/db_data/
