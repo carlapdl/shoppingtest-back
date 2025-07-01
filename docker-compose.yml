@@ -19,7 +19,7 @@ services:
       - app-network
   web:
     build:
-      #context: ./php # Build PHP/Apache service from the 'php' directory
+      context: . #Build context is the current directory (project root)
       dockerfile: Dockerfile
     container_name: shoppingtest-web_server # A descriptive name for your web container
     ports:
