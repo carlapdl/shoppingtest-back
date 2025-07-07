@@ -25,7 +25,7 @@ services:
     ports:
       - 82:80 
     volumes:
-      - ./src:/var/www/html # Mount your PHP application code into the web server's root
+      - ./:/var/www/html # Mount your PHP application code into the web server's root
       # Optional: If you have a custom Apache configuration file, uncomment and create apache.conf
       # - ./php/apache.conf:/etc/apache2/sites-available/000-default.conf
     depends_on:

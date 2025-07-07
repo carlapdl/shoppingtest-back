@@ -1,3 +1,19 @@
-RewriteEngine on
-RewriteRule .* /src/public/$0 [L]
-DirectoryIndex index.php
+#RewriteEngine on
+#RewriteRule .* /src/public/$0 [L]
+#DirectoryIndex index.php
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Ensure the request is NOT for an existing file
+    RewriteCond %{REQUEST_FILENAME} !-f
+    # Ensure the request is NOT for an existing directory
+    RewriteCond %{REQUEST_FILENAME} !-d
+    # --- NEW: Ensure the request URI is NOT already index.php ---
+    RewriteCond %{REQUEST_URI} !^/index\.php$
+    # -----------------------------------------------------------
+
+    # Rewrite all other requests to index.php
+    RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>
