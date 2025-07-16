@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: dbmysql:3306
--- Generation Time: Jul 16, 2025 at 07:02 AM
+-- Generation Time: Jul 16, 2025 at 08:50 AM
 -- Server version: 9.3.0
 -- PHP Version: 8.2.29
 
@@ -102,13 +102,17 @@ INSERT INTO `gallery` (`id`, `product_id`, `gallery_url`, `date_created`) VALUES
 (20, 'xbox-series-s', 'https://images-na.ssl-images-amazon.com/images/I/71iQ4HGHtsL._SL1500_.jpg', '2025-07-16 06:28:08'),
 (21, 'xbox-series-s', 'https://images-na.ssl-images-amazon.com/images/I/61IYrCrBzxL._SL1500_.jpg', '2025-07-16 06:28:08'),
 (22, 'xbox-series-s', 'https://images-na.ssl-images-amazon.com/images/I/61RnXmpAmIL._SL1500_.jpg', '2025-07-16 06:28:08'),
-(23, 'apple-imac-2021', 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/imac-24-blue-selection-hero-202104?wid=904&hei=840&fmt=jpeg&qlt=80&.v=1617492405000', '2025-07-16 06:38:01');
+(23, 'apple-imac-2021', 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/imac-24-blue-selection-hero-202104?wid=904&hei=840&fmt=jpeg&qlt=80&.v=1617492405000', '2025-07-16 06:38:01'),
+(24, 'apple-airpods-pro', 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MWP22?wid=572&hei=572&fmt=jpeg&qlt=95&.v=1591634795000', '2025-07-16 08:35:36'),
+(25, 'apple-airtag', 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airtag-double-select-202104?wid=445&hei=370&fmt=jpeg&qlt=95&.v=1617761672000', '2025-07-16 08:39:18');
 
 --
 -- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`id`, `name`, `inStock`, `category_id`, `description`, `brand`, `date_created`) VALUES
+('apple-airpods-pro', 'AirPods Pro', 0, 3, '\\n<h3>Magic like you’ve never heard</h3>\\n<p>AirPods Pro have been designed to deliver Active Noise Cancellation for immersive sound, Transparency mode so you can hear your surroundings, and a customizable fit for all-day comfort. Just like AirPods, AirPods Pro connect magically to your iPhone or Apple Watch. And they’re ready to use right out of the case.\\n\\n<h3>Active Noise Cancellation</h3>\\n<p>Incredibly light noise-cancelling headphones, AirPods Pro block out your environment so you can focus on what you’re listening to. AirPods Pro use two microphones, an outward-facing microphone and an inward-facing microphone, to create superior noise cancellation. By continuously adapting to the geometry of your ear and the fit of the ear tips, Active Noise Cancellation silences the world to keep you fully tuned in to your music, podcasts, and calls.\\n\\n<h3>Transparency mode</h3>\\n<p>Switch to Transparency mode and AirPods Pro let the outside sound in, allowing you to hear and connect to your surroundings. Outward- and inward-facing microphones enable AirPods Pro to undo the sound-isolating effect of the silicone tips so things sound and feel natural, like when you’re talking to people around you.</p>\\n\\n<h3>All-new design</h3>\\n<p>AirPods Pro offer a more customizable fit with three sizes of flexible silicone tips to choose from. With an internal taper, they conform to the shape of your ear, securing your AirPods Pro in place and creating an exceptional seal for superior noise cancellation.</p>\\n\\n<h3>Amazing audio quality</h3>\\n<p>A custom-built high-excursion, low-distortion driver delivers powerful bass. A superefficient high dynamic range amplifier produces pure, incredibly clear sound while also extending battery life. And Adaptive EQ automatically tunes music to suit the shape of your ear for a rich, consistent listening experience.</p>\\n\\n<h3>Even more magical</h3>\\n<p>The Apple-designed H1 chip delivers incredibly low audio latency. A force sensor on the stem makes it easy to control music and calls and switch between Active Noise Cancellation and Transparency mode. Announce Messages with Siri gives you the option to have Siri read your messages through your AirPods. And with Audio Sharing, you and a friend can share the same audio stream on two sets of AirPods — so you can play a game, watch a movie, or listen to a song together.</p>\\n', 'Apple', '2025-07-16 08:34:25'),
+('apple-airtag', 'AirTag', 1, 3, '\\n<h1>Lose your knack for losing things.</h1>\\n<p>AirTag is an easy way to keep track of your stuff. Attach one to your keys, slip another one in your backpack. And just like that, they’re on your radar in the Find My app. AirTag has your back.</p>\\n', 'Apple', '2025-07-16 08:34:25'),
 ('apple-imac-2021', 'iMac 2021', 1, 3, 'The new iMac!', 'Apple', '2025-07-16 06:37:03'),
 ('huarache-x-stussy-le', 'Nike Air Huarache Le', 1, 2, '<p>Great sneakers for everyday use!</p>', 'Nike x Stussy', '2025-07-11 09:36:51'),
 ('jacket-canada-goosee', 'Jacket', 1, 2, '<p>Awesome winter jacket</p>', 'Canada Goose', '2025-07-14 15:45:45'),
@@ -158,7 +162,9 @@ INSERT INTO `product_price` (`id`, `product_id`, `amount`, `currency_id`, `date_
 (2, 'jacket-canada-goosee', 518.47, 1, '2025-07-14 16:07:44'),
 (3, 'ps-5', 844.02, 1, '2025-07-16 06:22:33'),
 (4, 'xbox-series-s', 333.99, 1, '2025-07-16 06:32:18'),
-(5, 'apple-imac-2021', 1688.03, 1, '2025-07-16 07:00:10');
+(5, 'apple-imac-2021', 1688.03, 1, '2025-07-16 07:00:10'),
+(6, 'apple-airpods-pro', 300.23, 1, '2025-07-16 08:36:26'),
+(7, 'apple-airtag', 120.57, 1, '2025-07-16 08:39:56');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

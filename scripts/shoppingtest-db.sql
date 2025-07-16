@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: dbmysql:3306
--- Generation Time: Jul 14, 2025 at 04:08 PM
+-- Generation Time: Jul 16, 2025 at 08:48 AM
 -- Server version: 9.3.0
 -- PHP Version: 8.2.29
 
@@ -139,7 +139,8 @@ CREATE TABLE `product_price` (
 -- Indexes for table `attributes`
 --
 ALTER TABLE `attributes`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `attr_set_id` (`attr_set_id`);
 
 --
 -- Indexes for table `attribute_sets`
@@ -163,25 +164,29 @@ ALTER TABLE `currency`
 -- Indexes for table `gallery`
 --
 ALTER TABLE `gallery`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `product_id` (`product_id`);
 
 --
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `category_id` (`category_id`);
 
 --
 -- Indexes for table `product_attributes`
 --
 ALTER TABLE `product_attributes`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `product_id` (`product_id`,`attribute_id`);
 
 --
 -- Indexes for table `product_price`
 --
 ALTER TABLE `product_price`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `product_id` (`product_id`,`currency_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
