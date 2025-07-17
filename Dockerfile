@@ -2,6 +2,16 @@
 # Using php:8.3-apache as the base image for the latest stable PHP with Apache
 FROM php:8.3-apache
 
+# --- NEW: Copy a default php.ini and enable error display for development ---
+# The php.ini-production is a good base
+COPY --from=php:8.3-apache /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
+# Modify php.ini to show all errors for debugging
+RUN sed -i 's/display_errors = Off/display_errors = On/g' /usr/local/etc/php/php.ini && \
+    sed -i 's/display_startup_errors = Off/display_startup_errors = On/g' /usr/local/etc/php/php.ini && \
+    sed -i 's/error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT/error_reporting = E_ALL/g' /usr/local/etc/php/php.ini && \
+    sed -i 's/log_errors = Off/log_errors = On/g' /usr/local/etc/php/php.ini
+# --- END NEW php.ini setup ---
+
 # Install common PHP extensions required for typical web applications
 # `pdo` and `pdo_mysql` are essential for connecting to MySQL.
 # Add any other extensions your specific application requires (e.g., gd, zip, intl, bcmath, exif, soap, mbstring).
@@ -16,6 +26,7 @@ RUN docker-php-ext-install pdo pdo_mysql mysqli && \
 #RUN apt-get update && \
     #apt-get install -y default-mysql-client && \
 RUN apt-get update && apt-get install -y \
+    mariadb-client \
     default-mysql-client \
     libzip-dev \
     git \
@@ -67,10 +78,6 @@ WORKDIR /var/www/html
 # This layer will only be rebuilt if these files change
 COPY composer.json ./
 COPY composer.lock ./
-
-# >>> ADD THIS LINE TEMPORARILY FOR DEBUGGING <<<
-#CMD ["bash"]
-
 
 # Run composer install to download all dependencies, including webonyx/graphql-php
 # The `composer require` is a development command to add dependencies to the json file.
