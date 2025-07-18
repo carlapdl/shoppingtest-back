@@ -13,6 +13,9 @@ use RuntimeException;
 use Throwable;
 use PDOException;
 
+use App\Schema\CategoryType;
+
+//class GraphQL {
 class GraphQL {
     private Database $db;
 
@@ -35,24 +38,17 @@ class GraphQL {
                         'resolve' => static fn ($rootValue, array $args): string => $rootValue['prefix'] . $args['message'],
                     ],
                     'categories' => [
-                        'type' => Type::listOf(Type::string()),
+                        //'type' => Type::listOf(Type::string()),
+                        'type' => Type::listOf(new CategoryType()),
                         'description' => 'List of item categories',
                         'resolve' => function () use($databaseInstance)  {
-                            //echo "here";
-                            //$categories = Database::query('SELECT name FROM categories');
-                            //$categories = $this->db->query('SELECT name FROM categories');
-                            //return array_column($categories, 'name');
-                            //var_dump($this->db);
-                            //$categories = $databaseInstance->query('SELECT name FROM categories');
-                            //return array_column($categories, 'name');
-                            //var_dump($categories);
-                            
                             try {
                                 // Access the database instance via $this->db
                                 //$categories = $this->db->query('SELECT name FROM categories');
-                                $categories = $databaseInstance->query('SELECT name FROM categories');
-                                return array_column($categories, 'name'); // Extract 'name' column
+                                $categories = $databaseInstance->query('SELECT id, name FROM categories');
+                                //return array_column($categories, 'name'); // Extract 'name' column
                                 //var_dump($categories);
+                                return $categories;
                             } catch (PDOException $e) {
                                 // Handle database errors gracefully in GraphQL
                                 throw new \GraphQL\Error\UserError("Database error fetching categories: " . $e->getMessage());
